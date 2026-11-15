@@ -4,9 +4,8 @@ namespace InventoryDataAccess.Models
     public class InventoryItem
     {
         public int ProductId { get; set; }
-        public int StockId { get; set; }
-        public string Sku { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public int CategoryId { get; set; }
         public int SupplierId { get; set; }
         public int LocationId { get; set; }

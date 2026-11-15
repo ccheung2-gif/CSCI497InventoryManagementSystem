@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using InventoryDataAccess.Models;
 
 namespace InventoryDataAccess
 {
-    // dropdown lists + user id lookup
+    // lists for the dropdowns
     public static class LookupData
     {
         // all categories by name
@@ -78,23 +77,6 @@ namespace InventoryDataAccess
             }
 
             return locations;
-        }
-
-        // user id from username, 0 if no match
-        public static int GetUserId(string username)
-        {
-            using (SqliteConnection connection = Database.OpenConnection())
-            using (SqliteCommand command = connection.CreateCommand())
-            {
-                command.CommandText = "SELECT USER_ID FROM USER WHERE USERNAME = $username;";
-                command.Parameters.AddWithValue("$username", username);
-                object result = command.ExecuteScalar();
-                if (result == null)
-                {
-                    return 0;
-                }
-                return Convert.ToInt32(result);
-            }
         }
     }
 }
