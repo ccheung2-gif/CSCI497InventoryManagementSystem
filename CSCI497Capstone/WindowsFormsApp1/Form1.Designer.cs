@@ -59,6 +59,7 @@
             this.btnAddItem.TabIndex = 0;
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             //
             // btnEdit
             //
@@ -68,6 +69,7 @@
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             //
             // btnDelete
             //
@@ -77,6 +79,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             //
             // btnRefresh
             //
@@ -86,6 +89,7 @@
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             //
             // lblSearch
             //
@@ -130,6 +134,7 @@
             this.cboCategoryFilter.Name = "cboCategoryFilter";
             this.cboCategoryFilter.Size = new System.Drawing.Size(160, 23);
             this.cboCategoryFilter.TabIndex = 8;
+            this.cboCategoryFilter.SelectedIndexChanged += new System.EventHandler(this.cboCategoryFilter_SelectedIndexChanged);
             //
             // chkLowStock
             //
@@ -140,6 +145,7 @@
             this.chkLowStock.TabIndex = 9;
             this.chkLowStock.Text = "Low Stock";
             this.chkLowStock.UseVisualStyleBackColor = true;
+            this.chkLowStock.CheckedChanged += new System.EventHandler(this.chkLowStock_CheckedChanged);
             //
             // dgvInventory
             //
@@ -166,6 +172,7 @@
             this.dgvInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventory.Size = new System.Drawing.Size(776, 324);
             this.dgvInventory.TabIndex = 10;
+            this.dgvInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellDoubleClick);
             //
             // colId
             //
@@ -253,6 +260,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Overview";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
