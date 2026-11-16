@@ -59,6 +59,11 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\DatabaseInventoryData.cs" />
+    <Compile Include="Data\DatabaseSetup.cs" />
+    <Compile Include="Data\IInventoryData.cs" />
+    <Compile Include="Data\InMemoryInventoryData.cs" />
+    <Compile Include="Models\InventoryItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -88,6 +93,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataAccessCode\InventoryDataAccess\InventoryDataAccess.csproj">
+      <Project>{E718F66F-F3CD-48DB-BAD4-A8D118E8FF42}</Project>
+      <Name>InventoryDataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Also referenced here so NuGet copies the SQLite native DLLs into this app's bin folder. -->
+    <PackageReference Include="Microsoft.Data.Sqlite">
+      <Version>7.0.20</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Jeffrey's scripts, copied next to the .exe so DatabaseSetup can build inventory.db on first run. -->
+    <Content Include="..\..\Inventory_Source\database\schema.sql">
+      <Link>database\schema.sql</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Inventory_Source\database\seed.sql">
+      <Link>database\seed.sql</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Data;
 
 namespace WindowsFormsApp1
 {
@@ -16,7 +14,22 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            IInventoryData data;
+            try
+            {
+                DatabaseSetup.Initialize();
+                data = new DatabaseInventoryData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not open the inventory database.\n\n" + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // To test the UI without a database, use: data = new InMemoryInventoryData();
+            Application.Run(new Form1(data));
         }
     }
 }
